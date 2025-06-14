@@ -4,6 +4,7 @@ if (typeof window.textRandomizerInjected === 'undefined') {
 
     // Character set for randomization (letters, numbers - NO space here)
     const wordChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+        + '¡¢£¤¥¦§¨©ª«¬\xad®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ'
         + 'ĀāĂăĄąĆćĈĉĊċČčĎďĐđĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħĨĩĪīĬĭĮįİıĲĳĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŉŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽžſ'
         + 'ƀƁƂƃƄƅƆƇƈƉƊƋƌƍƎƏƐƑƒƓƔƕƖƗƘƙƚƛƜƝƞƟƠơƢƣƤƥƦƧƨƩƪƫƬƭƮƯưƱƲƳƴƵƶƷƸƹƺƻƼƽƾƿǀǁǂǃǄǅǆǇǈǉǊǋǌǍǎǏǐǑǒǓǔǕǖǗǘǙǚǛǜǝǞǟǠǡǢǣǤǥǦǧǨǩǪǫǬǭǮǯǰǱǲǳǴǵǶǷǸǹǺǻǼǽǾǿ'
         + 'ẞꞋꞌ✓✗ẀẁỲỳȘșȚț';
@@ -20,9 +21,9 @@ if (typeof window.textRandomizerInjected === 'undefined') {
     const MAX_BLUR = 12; // px
 
     function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
+        min = Math.ceil(min); // Inclusive
+        max = Math.floor(max); // Inclusive
+        return Math.floor(Math.random() * (max - min + 1)) + min; 
     }
 
     function generateRandomString(length) {
@@ -37,13 +38,13 @@ if (typeof window.textRandomizerInjected === 'undefined') {
         while (result.length < length) {
             // Check if we've reached the target word length AND if there's room for a space AND it's not the very beginning
             if (currentWordLength >= targetWordLength && result.length > 0 && result.length < length) {
-                result += ' '; // Add a space
+                result += " "; // Add a space
                 currentWordLength = 0; // Reset word counter
                 targetWordLength = getRandomInt(3, 6); // Get length for next word chunk
             } else {
                 // Add a non-space character if there's room
                 if (result.length < length) {
-                    result += wordChars.charAt(Math.floor(Math.random() * wordCharsLength));
+                    result += wordChars.charAt(getRandomInt(0, wordCharsLength-1));
                     currentWordLength++;
                 }
             }
@@ -65,7 +66,7 @@ if (typeof window.textRandomizerInjected === 'undefined') {
         if (result.endsWith(' ')) {
             // If the last character is a space and we have room, replace it with a random char.
             if (length > 0) {
-                result = result.substring(0, length - 1) + wordChars.charAt(Math.floor(Math.random() * wordCharsLength));
+                result = result.substring(0, length - 1) + wordChars.charAt(getRandomInt(0, wordCharsLength-1));
             } else {
                 result = ''; // Handle case where length was 0 or 1 and ended in space
             }
