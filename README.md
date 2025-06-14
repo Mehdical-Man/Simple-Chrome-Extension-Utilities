@@ -20,7 +20,7 @@ Each utility is a separate, unpacked Chrome Extension.
 - Once installed, the extension works automatically. When you visit `gemini.google.com`, any code block in a response will have a header with a copy button at both the top and the bottom.
 
 ## [Click To Randomize Text](Click%20To%20Randomize%20Text/)
-**Purpose:** Allows you to temporarily replace or blur text on any webpage. This is useful for testing layouts or creating screenshots without revealing sensitive information.
+**Purpose:** Allows you to temporarily replace or blur text on any webpage. This is useful for testing layouts or creating screenshots without revealing sensitive information. Non-ASCII characters are included to improve security.
 
 ### Usage & Features
 - Click the extension icon in the toolbar to open a popup where you can enable or disable the randomizer for the current tab.
