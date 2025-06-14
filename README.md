@@ -4,7 +4,7 @@ A collection of simple, single-purpose Chrome Extensions.
 ---
 
 ## What's different from the original?
-The random text generator includes non-ASCII characters. Yeah, that's it.
+The Randomizer includes non-ASCII characters. Yeah, that's it.
 
 ## How to Install
 Each utility is a separate, unpacked Chrome Extension.
